@@ -4,7 +4,9 @@ from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 from pyrogram.errors.exceptions.bad_request_400 import ChannelInvalid, UsernameInvalid, UsernameNotModified
 from pyrogram.errors import FloodWait
 from script import scripts
-from vars import ADMINS, TARGET_DB
+from vars import ADMINS, TARGET_DB,MONGO_URL
+from pymongo import MongoClient
+from pymongo.errors import DuplicateKeyError
 import asyncio
 import re
 import logging
@@ -150,6 +152,17 @@ async def start_forward(bot, userid, source_chat_id, last_msg_id):
                     notmedia += 1
                     continue
                 elif msg.media not in [enums.MessageMediaType.VIDEO, enums.MessageMediaType.AUDIO, enums.MessageMediaType.DOCUMENT]:
+                    unsupported += 1
+                    continue
+                media = getattr(msg, msg.media.value, None)
+                try:
+                    client = MongoClient(MONGO_URL)
+                    id = str(TARGET_DB)
+                    db = client[id]
+                    dup = db['Dup']
+                    file = {"_id": media.file_unique_id}
+                    dup.insert_one(file)
+                except DuplicateKeyError:
                     unsupported += 1
                     continue
                 try:

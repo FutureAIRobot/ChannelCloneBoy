@@ -1,12 +1,12 @@
 if [ -z $UPSTREAM_REPO ]
 then
   echo "Cloning main Repository"
-  git clone https://github.com/Joelkb/File-Forward-Bot.git /Forward
+  git clone https://github.com/CyberTG/FileForward.git /FileForward
 else
   echo "Cloning Custom Repo from $UPSTREAM_REPO "
-  git clone $UPSTREAM_REPO /Forward
+  git clone $UPSTREAM_REPO /FileForward
 fi
-cd /Forward
+cd /FileForward
 pip3 install -U -r requirements.txt
-echo "Starting DQ-The-File-Donor...."
+echo "Starting ...."
 python3 bot.py

@@ -11,12 +11,12 @@ def is_enabled(value, default):
         return default
 
 SESSION = environ.get("SESSION", "forward bot")
-API_ID = int(environ["API_ID"])
-API_HASH = environ["API_HASH"]
-BOT_TOKEN = environ["BOT_TOKEN"]
-LOG_CHANNEL = int(environ.get("LOG_CHANNEL", 0))
+API_ID = int(environ("API_ID", "28643132"))
+API_HASH = environ("API_HASH", "510c3009ea589830a89e045bf8aae656")
+BOT_TOKEN = environ("BOT_TOKEN", "6115134254:AAG8F7Dials4OnBN7ZxT8tRkBi7tUsaRrsw")
+LOG_CHANNEL = int(environ.get("LOG_CHANNEL", "-1001854284651"))
 PORT = int(environ.get("PORT", "8080"))
-ADMINS = [int(admin) if id_pattern.search(admin) else admin for admin in environ.get('ADMINS', '').split()]
-TARGET_DB = int(environ.get("TARGET_DB", 0))
+ADMINS = [int(admin) if id_pattern.search(admin) else admin for admin in environ.get('ADMINS', '5977113116').split()]
+TARGET_DB = int(environ.get("TARGET_DB", "-1001728288589"))
 UPSTREAM_REPO = environ.get("UPSTREAM_REPO", "https://github.com/CyberTG/FileForward")
 MONGO_URL = environ.get("MONGO_URL", "mongodb+srv://Test:Test@cluster0.samesoa.mongodb.net/?retryWrites=true&w=majority")

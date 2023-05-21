@@ -114,6 +114,7 @@ async def start_forward(bot, userid, source_chat_id, last_msg_id):
     notmedia = 0
     unsupported = 0
     left = 0
+    dupf = 0
     async with lock:
         try:
             btn = [[
@@ -163,7 +164,7 @@ async def start_forward(bot, userid, source_chat_id, last_msg_id):
                     file = {"_id": media.file_unique_id}
                     dup.insert_one(file)
                 except DuplicateKeyError:
-                    unsupported += 1
+                    dupf += 1
                     continue
                 try:
                     await msg.copy(

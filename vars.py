@@ -14,9 +14,9 @@ SESSION = environ.get("SESSION", "forward bot")
 API_ID = int(environ["API_ID"])
 API_HASH = environ["API_HASH"]
 BOT_TOKEN = environ["BOT_TOKEN"]
-LOG_CHANNEL = int(environ.get("LOG_CHANNEL", "-1001854284651"))
+LOG_CHANNEL = int(environ.get("LOG_CHANNEL", "-1001921917995"))
 PORT = int(environ.get("PORT", "8080"))
 ADMINS = [int(admin) if id_pattern.search(admin) else admin for admin in environ.get('ADMINS', '5977113116').split()]
-TARGET_DB = int(environ.get("TARGET_DB", "-1001614065669"))
+TARGET_DB = int(environ.get("TARGET_DB", "-1001986761426"))
 UPSTREAM_REPO = environ.get("UPSTREAM_REPO", "https://github.com/CyberTG/FileForward")
 MONGO_URL = environ.get("MONGO_URL", "mongodb+srv://Test:Test@cluster0.samesoa.mongodb.net/?retryWrites=true&w=majority")
